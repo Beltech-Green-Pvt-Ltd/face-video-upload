@@ -1,0 +1,90 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beltech AI Video Collection</title>
+</head>
+
+<body>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        #mainDiv {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #mainDiv input {
+            width: 300px;
+            height: 5%;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        form {
+            margin-top: 5rem;
+        }
+
+        button {
+            background-color: cyan;
+            border: 0;
+            border-radius: 10px;
+            height: 5%;
+            width: 300px;
+        }
+    </style>
+    <h1>Thanks for sharing your details</h1>
+    <div id="mainDiv">
+        <form>
+            <label>Enter your name</label><br />
+            <input name="username" type="text" id="username" /><br />
+            <label>Enter your phone number</label><br />
+            <input name="phone" type="number" id="phone" /><br />
+            <input name="video" type="file" accept="video/*" id="fileUpload" /><br />
+        </form>
+        <button onclick="handleVideoUpload()">Submit</button>
+    </div>
+    <script>
+        var video_file = "";
+        document.querySelector('#fileUpload').addEventListener('change', event => {
+            const files = event.target.files
+            video_file = files[0]
+        })
+
+        const handleVideoUpload = event => {
+
+            var username = document.getElementById("username").value;
+            var phone = document.getElementById("phone").value;
+
+            if (username == "" || phone == "" || video_file == "") {
+                alert("Name, phone number and video field can not be empty")
+            }
+            else if (phone.length != 10) {
+                alert("Enter a valid phone number")
+            }
+            else {
+                // formData.append('username', username)
+                // formData.append('phone', phone)
+                // formData.append('videoFile', video_file)
+
+                // fetch('/saveImage', {
+                //     method: 'POST',
+                //     body: formData
+                // })
+                //     .then(response => response.json())
+                //     .then(data => {
+                //         console.log(data)
+                //     })
+                //     .catch(error => {
+                //         console.error(error)
+                //     })
+            }
+
+        }
+    </script>
+</body>
+
+</html>
