@@ -77,10 +77,12 @@
                     .then(data => {
                         if(data.status == true){
                             alert(data.message)
+                            window.location.reload();
                         }
                     })
                     .catch(error => {
                         alert(error)
+                        window.location.reload();
                     })
             }
 
