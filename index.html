@@ -66,21 +66,22 @@
                 alert("Enter a valid phone number")
             }
             else {
-                // formData.append('username', username)
-                // formData.append('phone', phone)
-                // formData.append('videoFile', video_file)
+                var formdata = new FormData();
+                formdata.append('video', video_file,`${phone}.mp4`)
 
-                // fetch('/saveImage', {
-                //     method: 'POST',
-                //     body: formData
-                // })
-                //     .then(response => response.json())
-                //     .then(data => {
-                //         console.log(data)
-                //     })
-                //     .catch(error => {
-                //         console.error(error)
-                //     })
+                fetch('http://annotation.beltech.ai/jobRecord/upload/', {
+                    method: 'POST',
+                    body: formdata
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if(data.status == true){
+                            alert(data.message)
+                        }
+                    })
+                    .catch(error => {
+                        alert(error)
+                    })
             }
 
         }
